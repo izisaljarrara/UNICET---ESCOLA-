@@ -55,3 +55,26 @@ db.run(`
         FOREIGN KEY (curso_id) REFERENCES cursos(id)
     )
 `);
+// 6. Tabela de Notas (Avaliações)
+  db.run(`
+    CREATE TABLE IF NOT EXISTS notas (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      matricula_id INTEGER NOT NULL,
+      disciplina_id INTEGER NOT NULL,
+      valor REAL NOT NULL,
+      tipoAvaliacao TEXT NOT NULL,
+      dataLancamento TEXT NOT NULL,
+      FOREIGN KEY (matricula_id) REFERENCES matriculas(id),
+      FOREIGN KEY (disciplina_id) REFERENCES disciplinas(id)
+    )
+  `);
+// 5. Tabela de Professores
+  db.run(`
+    CREATE TABLE IF NOT EXISTS professores (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      nome TEXT NOT NULL,
+      email TEXT NOT NULL UNIQUE,
+      titulacao TEXT NOT NULL,
+      telefone TEXT
+    )
+  `);
